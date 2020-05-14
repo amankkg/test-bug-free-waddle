@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+}
+
+.link {
+  font-size: large;
+  margin: 0 5px;
+}
+
+.primary {
+  color: cornflowerblue;
+}
+
+.secondary {
+  color: palevioletred;
+}

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
-import './index.css'
+import {Entry} from './entry'
+import styles from './index.module.sass'
 
 const defaultState = {
   login: '',
@@ -26,33 +27,35 @@ export function Form({onSubmit}) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <span>Login</span>
-        <input name="login" value={login} onChange={onChange} />
-      </label>
-      <label>
-        <span>Password</span>
-        <input
-          name="password"
-          value={password}
-          onChange={onChange}
-          type="password"
-        />
-      </label>
-      <label>
-        <span>Confirm Password</span>
-        <input
-          name="confirmPassword"
-          value={confirmPassword}
-          onChange={onChange}
-          type="password"
-        />
-      </label>
-      <button type="button" onClick={reset}>
-        reset
-      </button>
-      <button>submit</button>
+    <form onSubmit={handleSubmit} className={styles.root}>
+      <Entry
+        label="Login"
+        name="login"
+        value={login}
+        onChange={onChange}
+        type="text"
+      />
+      <Entry
+        label="Password"
+        name="password"
+        value={password}
+        onChange={onChange}
+        type="password"
+      />
+      <Entry
+        label="Confirm Password"
+        name="confirmPassword"
+        value={confirmPassword}
+        onChange={onChange}
+        type="password"
+        error={password !== confirmPassword}
+      />
+      <div className={styles.footer}>
+        <button type="button" onClick={reset}>
+          reset
+        </button>
+        <button>submit</button>
+      </div>
     </form>
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import './app.css'
 import {Header} from './header'
 import {Form} from './form'
+import styles from './app.module.css'
 
 export function App() {
   const onSubmit = (form) => {
@@ -12,14 +12,19 @@ export function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className={styles.root}>
+      <header className={styles.header}>
         <Header />
       </header>
-      <main>
+      <main className={styles.main}>
         <h1>Register as new user</h1>
         <Form onSubmit={onSubmit} />
       </main>
+      <footer className={styles.footer}>
+        <a href="https://redux.js.org" className={styles.link}>
+          Learn Redux
+        </a>
+      </footer>
     </div>
   )
 }

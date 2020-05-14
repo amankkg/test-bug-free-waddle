@@ -1,15 +1,28 @@
 import React from 'react'
+import cx from 'classnames'
 
-import './index.css'
+import styles from './index.module.css'
 
 export function Header() {
+  const primaryLinkClass = cx(styles.link, styles.primary)
+  const secondaryLinkClass = cx(styles.link, styles.secondary)
+
   return (
-    <div>
-      <a href="https://netlify.com" target="_blank" rel="noopener noreferrer">
+    <div className={styles.root}>
+      <a
+        href="https://netlify.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={primaryLinkClass}
+      >
         Learn Netlify
       </a>
-      <br />
-      <a href="https://sass-lang.com" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://sass-lang.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={secondaryLinkClass}
+      >
         Learn Sass
       </a>
     </div>
