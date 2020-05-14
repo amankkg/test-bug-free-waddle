@@ -1,15 +1,34 @@
 import React from 'react'
-import cx from 'classnames'
-
-import styles from './entry.module.sass'
+import styled from 'styled-components'
 
 export const Entry = ({label, name, value, onChange, type, error}) => {
-  const className = cx(styles.root, error && styles.error)
-
   return (
-    <label className={className}>
+    <Root error={error}>
       <span>{label}</span>
       <input name={name} value={value} onChange={onChange} type={type} />
-    </label>
+    </Root>
   )
 }
+
+const Root = styled.label`
+  display: flex;
+  justify-content: stretch;
+  border-bottom: ${(props) => (props.error ? '1px solid red' : 'none')};
+
+  > * {
+    font-size: large;
+    padding: 5px;
+    margin: 0 5px;
+  }
+
+  > span {
+    color: ${(props) => (props.error ? 'red' : 'inherit')};
+    width: 40%;
+    text-align: end;
+  }
+
+  > input {
+    width: 200px;
+    border: ${(props) => (props.error ? '1px solid red' : '1px solid grey')};
+  }
+`
